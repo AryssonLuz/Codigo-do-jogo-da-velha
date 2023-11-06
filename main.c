@@ -63,9 +63,15 @@ int main(int argc, char *argv[]) {
 							do{
 							printf("\n\n  Jogador %d: Digite a linha e a coluna que deseja jogar:\n",jogador);
 							scanf("%d%d",&linha,&coluna);
-							system("cls");
-							}while(linha < 0 || linha > 2 || coluna < 0 || coluna > 2 || tabu[linha][coluna] != ' ');
+							if(linha < 0 || linha > 2 || coluna < 0 || coluna > 2 || tabu[linha][coluna] != ' '){
+								
+							}else{
+								
+								system("cls");
+							}
 							
+							}while(linha < 0 || linha > 2 || coluna < 0 || coluna > 2 || tabu[linha][coluna] != ' ' );
+						
 							if(jogador == 1){
 								tabu [linha][coluna] = '0';	
 								jogador ++;
@@ -132,6 +138,7 @@ int main(int argc, char *argv[]) {
 								ganhou = 1;
 							}
 						}while(ganhou == 0 && jogadas < 9);
+						
 						
 						
 						if(ganhou == 0){
