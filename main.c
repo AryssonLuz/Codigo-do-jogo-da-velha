@@ -153,14 +153,14 @@ int main(int argc, char *argv[]) {
 				}
 				case 2:{
 					
-					printf("Arysson sempre em primeiro\nKaike em segundo\nAnthonny nem em terceiro, esse coitado!!!");
+					printf("Arysson sempre em primeiro\nKaike em segundo\nAnthonny nem em terceiro, esse coitado!!!\n\nPrecione qualquer tecla: ");
 					getchar();
 					
 					break;
 				}
 				case 3:{
 					
-					printf("Criador por:\nArysson Andre\nKaike Garcia\nAnthonny John\n\nCodigo inspirado no canal: Programe seu futuro. ");
+					printf("Criador por:\nArysson Andre\nKaike Garcia\nAnthonny John\n\nCodigo inspirado no canal: Programe seu futuro.\n\nPrecione qualquer tecla: ");
 					getchar();					
 					
 					break;
