@@ -1,18 +1,32 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 int main(int argc, char *argv[]) {
 	
+	//area da declaração das variaveis
 	int i,j,linha,coluna, jogador, ganhou, jogadas, opcao, op;
 	char tabu[3][3];
+	FILE *rak;
+	
+	struct jogadores{
+		char nome[500];
+		int id;
+		int gg;
+	};
+	
+	struct jogadores jo;
 	
 	do{
+		//aqui ele irar fazer imprimir todo o menu
 		printf("\n\tJogo da velha\n");
 		printf("\n\n\n\tDigite (1) para jogar\n\n\tDigite (2) para Ver o ranking\n\n\tDigite (3) para ver os creditos\n\n\tDigite (4) para Sair\n\n");
 		scanf("%d",&op);
+		//o system será usado para que as informações apresentadas anteriomente não fique na tela, deixando assim mais dinamico
 		system("cls");
 		
+			//dando a possibilidade de poder escolher as opções apresentadas anteriormente
 			switch(op){
 				case 1:{
 					
@@ -21,6 +35,7 @@ int main(int argc, char *argv[]) {
 						ganhou = 0;
 						jogadas = 0;
 						
+						//criação do tabuleiro
 						for (i=0;i<3;i++){
 							
 							for(j=0;j<3;j++){
@@ -33,7 +48,7 @@ int main(int argc, char *argv[]) {
 						
 						
 						do{
-						
+							//as coordenadas do tabuleiro, que ira reprentar a localização das possiveis jogadas
 							printf("\n\n\t 0   1   2\n\n");
 							for (i=0;i<3;i++){
 								
@@ -139,14 +154,42 @@ int main(int argc, char *argv[]) {
 							}
 						}while(ganhou == 0 && jogadas < 9);
 						
-						
+						if((ganhou == 1 && jogador == 1) || (ganhou == 1 && jogador == 2)){
+							
+							jo.id++;
+																									
+							rak = fopen("Ranking.txt", "a");
+							
+							printf("\nDigite seu nome, ganhador:");
+							scanf("%s",jo.nome);	
+					
+							fprintf(rak,"\n%d:%s. Ganhou %d vezes!!!",jo.id,jo.nome,jo.gg);
+								
+							fclose(rak);
+								
+							printf("Seu nome foi gravado com sucesso!!!");
+							
+							jo.id++;
+							jo.gg++;
+						}
 						
 						if(ganhou == 0){
-							printf("\n O jogo finalizou sem ganhador!\n"); 	
-							printf("\nDigite 1 para jogar novamente: \n");
+							system("cls");
+							printf("O jogo finalizou sem ganhador!"); 	
+							printf("\nDigite 1 para jogar novamente: ");
+							printf("\nDigite qualquer outra coisa para sair: ");
 							scanf("%d",&opcao);
 							
 						}
+						
+						if(ganhou == 1){
+							system("cls");
+							printf("O jogo acabou, deseja ir outra partida?");
+							printf("\nDigite 1 para jogar novemente: ");
+							printf("\nDigite qualquer outra coisa para sair: ");
+							scanf("%d",&opcao);
+						}
+						
 					}while(opcao == 1);
 					
 					break;
