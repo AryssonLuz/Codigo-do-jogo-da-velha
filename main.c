@@ -13,7 +13,6 @@ int main(int argc, char *argv[]) {
 	struct jogadores{
 		char nome[500];
 		int id;
-		int gg;
 	};
 	
 	struct jogadores jo;
@@ -155,22 +154,33 @@ int main(int argc, char *argv[]) {
 						}while(ganhou == 0 && jogadas < 9);
 						
 						if((ganhou == 1 && jogador == 1) || (ganhou == 1 && jogador == 2)){
+									
+							rak= fopen("Ranking.txt", "r");
 							
-							jo.id++;
-																									
+							if(rak == NULL){
+								jo.id=1;
+							}else{
+								jo.id++;	
+							}
+																																
 							rak = fopen("Ranking.txt", "a");
+							
+							if(rak == NULL){
+								printf("Erro ao abrir o arquivo!\n");
+								getchar();
+							}
 							
 							printf("\nDigite seu nome, ganhador:");
 							scanf("%s",jo.nome);	
 					
-							fprintf(rak,"\n%d:%s. Ganhou %d vezes!!!",jo.id,jo.nome,jo.gg);
+							
+							fprintf(rak,"\n%d:%s. Ganhou!!!",jo.id,jo.nome);
 								
 							fclose(rak);
 								
 							printf("Seu nome foi gravado com sucesso!!!");
 							
-							jo.id++;
-							jo.gg++;
+						    jogadas = 0;
 						}
 						
 						if(ganhou == 0){
@@ -190,6 +200,12 @@ int main(int argc, char *argv[]) {
 							scanf("%d",&opcao);
 						}
 						
+						if(opcao > 1){
+							rak = fopen("Ranking.txt","a");
+							fprintf(rak,"\n----------------------------------\n\n");
+							
+						}
+						
 					}while(opcao == 1);
 					
 					break;
@@ -203,7 +219,7 @@ int main(int argc, char *argv[]) {
 				}
 				case 3:{
 					
-					printf("Criador por:\nArysson Andre\nKaike Garcia\nAnthonny John\n\nCodigo inspirado no canal: Programe seu futuro.\n\nPrecione qualquer tecla: ");
+					printf("Criador por:\nArysson Andre\nKaike Garcia\nAnthonny John\n\n\nPrecione qualquer tecla: ");
 					getchar();					
 					
 					break;
