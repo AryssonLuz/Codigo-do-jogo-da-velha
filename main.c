@@ -1,11 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <locale.h>
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 int main(int argc, char *argv[]) {
 	
 	//area da declaração das variaveis
+	setlocale(LC_ALL, "Portuguese_Brazil");
 	int i,j,linha,coluna, jogador, ganhou, jogadas, opcao, op;
 	char tabu[3][3];
 	FILE *rak;
@@ -19,8 +21,8 @@ int main(int argc, char *argv[]) {
 	
 	do{
 		//aqui ele irar fazer imprimir todo o menu
-		printf("\n\tJogo da velha\n");
-		printf("\n\n\n\tDigite (1) para jogar\n\n\tDigite (2) para Ver o ranking\n\n\tDigite (3) para ver os creditos\n\n\tDigite (4) para Sair\n\n");
+		printf("\n\t-> Jogo da velha <-\n");
+		printf("\n\n\n\tDigite (1) para jogar\n\n\tDigite (2) para Ver os creditos\n\n\tDigite (3) para sair\n\n");
 		scanf("%d",&op);
 		//o system será usado para que as informações apresentadas anteriomente não fique na tela, deixando assim mais dinamico
 		system("cls");
@@ -48,7 +50,7 @@ int main(int argc, char *argv[]) {
 						
 						do{
 							//as coordenadas do tabuleiro, que ira reprentar a localização das possiveis jogadas
-							printf("\n\n\t 0   1   2\n\n");
+							printf("\n\n\t 1   2   3\n\n");
 							for (i=0;i<3;i++){
 								
 								for(j=0;j<3;j++){
@@ -64,7 +66,7 @@ int main(int argc, char *argv[]) {
 									}
 									if(j == 2){
 										
-										printf("   %d",i);
+										printf("   %d",i+1);
 									}
 										
 								}
@@ -77,6 +79,8 @@ int main(int argc, char *argv[]) {
 							do{
 							printf("\n\n  Jogador %d: Digite a linha e a coluna que deseja jogar:\n",jogador);
 							scanf("%d%d",&linha,&coluna);
+							linha= linha - 1;
+							coluna = coluna- 1;
 							if(linha < 0 || linha > 2 || coluna < 0 || coluna > 2 || tabu[linha][coluna] != ' '){
 								
 							}else{
@@ -212,19 +216,12 @@ int main(int argc, char *argv[]) {
 				}
 				case 2:{
 					
-					printf("Arysson sempre em primeiro\nKaike em segundo\nAnthonny nem em terceiro, esse coitado!!!\n\nPrecione qualquer tecla: ");
-					getchar();
-					
-					break;
-				}
-				case 3:{
-					
-					printf("Criador por:\nArysson Andre\nKaike Garcia\nAnthonny John\n\n\nPrecione qualquer tecla: ");
+					printf("Criador por:\nArysson André\nKaike Garcia\nAnthonny John\n\n\nPrecione qualquer tecla: ");
 					getchar();					
 					
 					break;
 				}
-				case 4:{
+				case 3:{
 					
 					printf("Fechando jogo!");
 					getchar();
