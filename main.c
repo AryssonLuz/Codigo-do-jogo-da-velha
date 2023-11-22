@@ -150,15 +150,14 @@ int main(int argc, char *argv[]) {
                     if (jogo.ganhou == 0) {
                         system("cls");
                         printf("O jogo finalizou sem ganhador!\n");
-                        printf("Digite 1 para jogar novamente: ");
-                        printf("Digite qualquer outra coisa para sair: ");
+                        printf("Digite 1 para jogar novamente digite (2) para sair:  ");
                         scanf("%d", &jogo.opcao);
                     }
 
                     if (jogo.ganhou == 1) {
                         system("cls");
                         printf("O jogo acabou, deseja ir outra partida?\n");
-                        printf("Digite 1 para jogar novamente ou digite qualquer outra coisa para sair: ");
+                        printf("Digite 1 para jogar novamente ou digite (2) para sair: ");
                         scanf("%d", &jogo.opcao);
                         
                     }
