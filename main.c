@@ -20,7 +20,7 @@ int main(int argc, char *argv[]) {
     setlocale(LC_ALL, "Portuguese_Brazil");
 
     Velha jogo;
-
+	
     do {
         printf("\n\t-> Jogo da velha <-\n");
         printf("\n\n\n\tDigite (1) para jogar\n\n\tDigite (2) para Ver os créditos\n\n\tDigite (3) para sair\n\n");
@@ -150,25 +150,27 @@ int main(int argc, char *argv[]) {
                     if (jogo.ganhou == 0) {
                         system("cls");
                         printf("O jogo finalizou sem ganhador!\n");
-                        printf("Digite 1 para jogar novamente digite (2) para sair:  ");
+                        printf("Digite (1) para jogar novamente ou digite (2) para sair:  ");
                         scanf("%d", &jogo.opcao);
                     }
 
                     if (jogo.ganhou == 1) {
                         system("cls");
                         printf("O jogo acabou, deseja ir outra partida?\n");
-                        printf("Digite 1 para jogar novamente ou digite (2) para sair: ");
+                        printf("Digite (1) para jogar novamente ou digite (2) para sair: ");
                         scanf("%d", &jogo.opcao);
                         
                     }
 
                 } while (jogo.opcao == 1);
-
-                break;
+				
+						
+                
             }
             case 2: {
                 printf("\n\tCriado por:\n\n\tArysson André\n\n\tKaike Garcia\n\n\tAnthonny John\n\n\nPressione qualquer tecla: ");
-                break;
+                getchar();
+				break;
             }
             case 3: {
                 printf("Fechando jogo!\n");
@@ -177,12 +179,13 @@ int main(int argc, char *argv[]) {
             }
             default: {
                 printf("Opção inválida\n");
+                getchar(); 
                 system("cls");
                 break;
             }
         }
 
-        while (getchar() != '\n'); 
+        
         system("cls");
     } while (jogo.op != 1);
 
